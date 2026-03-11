@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Determinant Calculator</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center">Determinant Calculator</h1>
+    <div class="form">
+
+        <form action="/dimension" method="POST">
+            <label>Matrix dimension:</label>
+            <input type="text" name="n" id = "dimension" value="{{ n }}" min="1" max="20">
+            <button type="submit">Enter</button>
+        </form>
+
+        <br>
+
+        <form action="/calculate" method="POST">
+            <table>
+                {% for i in range(n) %}
+                <tr>
+                    {% for j in range(n) %}
+                    <td>
+                        <input type="text" name="a_{{ i }}_{{ j }}"
+                           value="{{ inputs[i][j] if inputs and inputs[i][j] is not none else '' }}">
+                    </td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </table>
+            <br>
+            <button type="submit">Calculate</button>
+
+        </form>
+    </div>
+
+    {% if result is not none %}
+        <h4>Result: {{ result }}</h4>
+    {% endif %}
+</div>
+{% endblock %}
