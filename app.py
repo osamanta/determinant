@@ -1,6 +1,6 @@
-import math
 from flask import Flask, render_template, request, redirect, url_for, session
 import numpy as np
+import math
 
 app = Flask(__name__)
 app.secret_key = "supersecretkey"
@@ -72,8 +72,8 @@ def calculate():
         d = det(A)
         if d.is_integer():
             d = int(d)
-        elif math.isclose(d, round(d), rel_tol=1e-9, abs_tol=1e-9):
-            d = int(round(d))
+        else:
+            d = round(d, 10)
         session["result"] = d
         A_python = []
         for row in A.tolist():
