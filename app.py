@@ -1,3 +1,4 @@
+import math
 from flask import Flask, render_template, request, redirect, url_for, session
 import numpy as np
 
@@ -71,6 +72,8 @@ def calculate():
         d = det(A)
         if d.is_integer():
             d = int(d)
+        elif math.isclose(d, round(d), rel_tol=1e-9, abs_tol=1e-9):
+            d = int(round(d))
         session["result"] = d
         A_python = []
         for row in A.tolist():
@@ -82,9 +85,11 @@ def calculate():
                     new_row.append(float(x))
             A_python.append(new_row)
         session["inputs"] = A_python
-    except:
+    except Exception as e:
         session["result"] = "Invalid input"
         session["n"] = n
+        print(f"An error occurred: {e}")
+
 
     return redirect(url_for("index"))
 
