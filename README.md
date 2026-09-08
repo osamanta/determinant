@@ -13,7 +13,7 @@ A simple Flask web application that computes the determinant of a square matrix 
 
 - **Backend:** Python, Flask
 - **Math:** NumPy
-- **Frontend:** HTML templates (Jinja2), static CSS/JS
+- **Frontend:** HTML templates (Jinja2), static CSS
 - **Deployment:** Procfile included (Heroku-ready)
 
 ## Project Structure
