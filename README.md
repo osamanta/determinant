@@ -1,6 +1,7 @@
 # Determinant Calculator
 
 A simple Flask web application that computes the determinant of a square matrix using Gaussian elimination.
+Demo: determinant-d9d56cbb61a5.herokuapp.com
 
 ## Features
 
